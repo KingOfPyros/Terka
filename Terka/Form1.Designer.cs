@@ -28,12 +28,83 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.UsernameTextBox = new System.Windows.Forms.TextBox();
+            this.PasswordTextBox = new System.Windows.Forms.TextBox();
+            this.RoleComboBox = new System.Windows.Forms.ComboBox();
+            this.RegisterButton = new System.Windows.Forms.Button();
+            this.LoginButton = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // UsernameTextBox
+            // 
+            this.UsernameTextBox.Location = new System.Drawing.Point(129, 88);
+            this.UsernameTextBox.Name = "UsernameTextBox";
+            this.UsernameTextBox.Size = new System.Drawing.Size(125, 27);
+            this.UsernameTextBox.TabIndex = 0;
+            // 
+            // PasswordTextBox
+            // 
+            this.PasswordTextBox.Location = new System.Drawing.Point(129, 195);
+            this.PasswordTextBox.Name = "PasswordTextBox";
+            this.PasswordTextBox.Size = new System.Drawing.Size(125, 27);
+            this.PasswordTextBox.TabIndex = 1;
+            // 
+            // RoleComboBox
+            // 
+            this.RoleComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.HistoryList;
+            this.RoleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.RoleComboBox.FormattingEnabled = true;
+            this.RoleComboBox.Items.AddRange(new object[] {
+            "admin",
+            "user"});
+            this.RoleComboBox.Location = new System.Drawing.Point(129, 292);
+            this.RoleComboBox.Name = "RoleComboBox";
+            this.RoleComboBox.Size = new System.Drawing.Size(125, 28);
+            this.RoleComboBox.TabIndex = 2;
+            // 
+            // RegisterButton
+            // 
+            this.RegisterButton.Location = new System.Drawing.Point(48, 367);
+            this.RegisterButton.Name = "RegisterButton";
+            this.RegisterButton.Size = new System.Drawing.Size(84, 71);
+            this.RegisterButton.TabIndex = 3;
+            this.RegisterButton.Text = "Register Button";
+            this.RegisterButton.UseVisualStyleBackColor = true;
+            this.RegisterButton.Click += new System.EventHandler(this.RegisterButton_Click_1);
+            // 
+            // LoginButton
+            // 
+            this.LoginButton.Location = new System.Drawing.Point(237, 367);
+            this.LoginButton.Name = "LoginButton";
+            this.LoginButton.Size = new System.Drawing.Size(84, 71);
+            this.LoginButton.TabIndex = 4;
+            this.LoginButton.Text = "Login Button";
+            this.LoginButton.UseVisualStyleBackColor = true;
+            this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click_1);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(398, 450);
+            this.Controls.Add(this.LoginButton);
+            this.Controls.Add(this.RegisterButton);
+            this.Controls.Add(this.RoleComboBox);
+            this.Controls.Add(this.PasswordTextBox);
+            this.Controls.Add(this.UsernameTextBox);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private TextBox UsernameTextBox;
+        private TextBox PasswordTextBox;
+        private ComboBox RoleComboBox;
+        private Button RegisterButton;
+        private Button LoginButton;
     }
 }
