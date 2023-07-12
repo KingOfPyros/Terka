@@ -46,7 +46,8 @@ namespace Terka
                     }
                     else if (role == "user")
                     {
-                        MessageBox.Show("Login successful. You are logged in as a user.");
+                        Form3 form3 = new Form3();
+                        form3.ShowDialog();
                     }
                 }
                 else
