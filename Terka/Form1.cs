@@ -41,7 +41,8 @@ namespace Terka
 
                     if (role == "admin")
                     {
-                        MessageBox.Show("Login successful. You are logged in as an admin.");
+                        Form2 form2 = new Form2();
+                        form2.ShowDialog();
                     }
                     else if (role == "user")
                     {
