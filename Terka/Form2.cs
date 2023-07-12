@@ -51,7 +51,7 @@ namespace Terka
                 insertCommand.Parameters.AddWithValue("@Image", imageBytes ?? (object)DBNull.Value);
                 insertCommand.ExecuteNonQuery();
 
-                MessageBox.Show("Product information saved successfully.");
+                MessageBox.Show("Item information saved successfully.");
                 ResetForm();
             }
         }

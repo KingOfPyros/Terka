@@ -33,7 +33,7 @@ namespace Terka
 
                 string productName = ProductNameTextBox.Text.Trim();
 
-                SqlCommand selectCommand = new SqlCommand("SELECT Name, Description, Image FROM Products WHERE Name = @ProductName", connection);
+                SqlCommand selectCommand = new SqlCommand("SELECT Name, Description, Image FROM Items WHERE Name = @ProductName", connection);
                 selectCommand.Parameters.AddWithValue("@ProductName", productName);
                 SqlDataReader reader = selectCommand.ExecuteReader();
 
@@ -60,7 +60,7 @@ namespace Terka
                 }
                 else
                 {
-                    MessageBox.Show("Product not found.");
+                    MessageBox.Show("Item not found.");
                     ResetForm();
                 }
 
