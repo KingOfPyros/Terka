@@ -42,14 +42,12 @@ namespace Terka
                     if (role == "admin")
                     {
                         Form2 form2 = new Form2();
-                        form2.Show();
-                        this.Close();
+                        form2.ShowDialog();
                     }
                     else if (role == "user")
                     {
                         Form3 form3 = new Form3();
-                        form3.Show();
-                        this.Close();
+                        form3.ShowDialog();
                     }
                 }
                 else
