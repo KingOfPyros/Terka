@@ -6,7 +6,7 @@ namespace Terka
 {
     public partial class Form1 : Form
     {
-        private string connectionString = "Data Source=SQL6030.site4now.net;Initial Catalog=db_a9b162_illiakursnew2;User Id=db_a9b162_illiakursnew2_admin;Password=qwerty123";
+        private string connectionString = "Data Source=SQL8005.site4now.net;Initial Catalog=db_a9c6db_illiakurslog;User Id=db_a9c6db_illiakurslog_admin;Password=qwerty123";
 
         public Form1()
         {
