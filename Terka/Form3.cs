@@ -13,71 +13,64 @@ namespace Terka
 {
     public partial class Form3 : Form
     {
-        private string connectionString = "Data Source=SQL6030.site4now.net;Initial Catalog=db_a9b162_illiakursnew2;User Id=db_a9b162_illiakursnew2_admin;Password=qwerty123";
+        private List<Item> _items;
+        private FlowLayoutPanel _flowLayoutPanel;
 
         public Form3()
         {
             InitializeComponent();
+            InitializeItems();
+            InitializeFlowLayoutPanel();
+            LoadItems();
         }
 
-        private void Form3_Load(object sender, EventArgs e)
+        private void InitializeItems()
         {
-            LoadProductData();
+            ItemRepository itemRepository = new ItemRepository();
+            _items = itemRepository.GetAllItems();
         }
 
-        private void LoadProductData()
+        private void InitializeFlowLayoutPanel()
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            _flowLayoutPanel = new FlowLayoutPanel();
+            _flowLayoutPanel.Dock = DockStyle.Fill;
+            Controls.Add(_flowLayoutPanel);
+        }
+
+        private void LoadItems()
+        {
+            foreach (var item in _items)
             {
-                connection.Open();
+                Panel itemPanel = new Panel();
+                itemPanel.Size = new Size(200, 800);
+                itemPanel.BorderStyle = BorderStyle.FixedSingle;
 
-                string productName = ProductNameTextBox.Text.Trim();
-
-                SqlCommand selectCommand = new SqlCommand("SELECT Name, Description, Image FROM Items WHERE Name = @ProductName", connection);
-                selectCommand.Parameters.AddWithValue("@ProductName", productName);
-                SqlDataReader reader = selectCommand.ExecuteReader();
-
-                if (reader.Read())
+                PictureBox pictureBox = new PictureBox();
+                pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBox.Dock = DockStyle.Fill;
+                using (MemoryStream ms = new MemoryStream(item.ImagePath))
                 {
-                    string name = reader.GetString(0);
-                    string description = reader.GetString(1);
-                    byte[] imageBytes = reader.IsDBNull(2) ? null : (byte[])reader.GetValue(2);
-
-                    NameTextBox.Text = name;
-                    DescriptionTextBox.Text = description;
-
-                    if (imageBytes != null)
-                    {
-                        using (MemoryStream ms = new MemoryStream(imageBytes))
-                        {
-                            PictureBox.Image = Image.FromStream(ms);
-                        }
-                    }
-                    else
-                    {
-                        PictureBox.Image = null;
-                    }
+                    pictureBox.Image = Image.FromStream(ms);
                 }
-                else
-                {
-                    MessageBox.Show("Item not found.");
-                    ResetForm();
-                }
+                itemPanel.Controls.Add(pictureBox);
+                Label nameLabel = new Label();
+                nameLabel.Text = item.Name;
+                nameLabel.Font = new Font(nameLabel.Font, FontStyle.Bold);
+                nameLabel.Dock = DockStyle.Bottom;
+                itemPanel.Controls.Add(nameLabel);
 
-                reader.Close();
+                Label descriptionLabel = new Label();
+                descriptionLabel.Text = item.Description;
+                descriptionLabel.Dock = DockStyle.Bottom;
+                descriptionLabel.AutoSize = false;
+                descriptionLabel.Width = 200;
+                descriptionLabel.Height = 600;
+                descriptionLabel.TextAlign = ContentAlignment.TopLeft;
+                itemPanel.Controls.Add(descriptionLabel);
+
+
+                _flowLayoutPanel.Controls.Add(itemPanel);
             }
-        }
-
-        private void ResetForm()
-        {
-            NameTextBox.Text = "";
-            DescriptionTextBox.Text = "";
-            PictureBox.Image = null;
-        }
-
-        private void SearchButton_Click(object sender, EventArgs e)
-        {
-            LoadProductData();
         }
     }
 }
