@@ -1,6 +1,8 @@
 using System;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
+using Terka.Controllers;
+using Terka.Models;
 
 namespace Terka
 {
@@ -13,7 +15,7 @@ namespace Terka
             InitializeComponent();
         }
 
-        private void LoginButton_Click_1(object sender, EventArgs e)
+        private void LoginButton_Click_1(object sender, EventArgs e, FormController formController)
         {
             string username = UsernameTextBox.Text;
             string password = PasswordTextBox.Text;
@@ -46,8 +48,8 @@ namespace Terka
                     }
                     else if (role == "user")
                     {
-                        Form3 form3 = new Form3();
-                        form3.ShowDialog();
+                        FormController formController1 = new FormController();
+                        formController1.ShowView();
                     }
                 }
                 else

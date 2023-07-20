@@ -5,8 +5,9 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Terka.Models;
 
-namespace Terka
+namespace Terka.Interface
 {
     public class ItemRepository
     {
@@ -14,7 +15,7 @@ namespace Terka
 
         public ItemRepository()
         {
-            _connectionString = "Data Source=SQL6030.site4now.net;Initial Catalog=db_a9b162_illiakursnew2;User Id=db_a9b162_illiakursnew2_admin;Password=qwerty123"; 
+            _connectionString = "Data Source=SQL6030.site4now.net;Initial Catalog=db_a9b162_illiakursnew2;User Id=db_a9b162_illiakursnew2_admin;Password=qwerty123";
         }
 
         public List<Item> GetAllItems()
