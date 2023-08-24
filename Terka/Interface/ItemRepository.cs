@@ -12,7 +12,6 @@ namespace Terka.Interface
     public class ItemRepository
     {
         private string _connectionString;
-
         public ItemRepository()
         {
             _connectionString = "Data Source=SQL6030.site4now.net;Initial Catalog=db_a9b162_illiakursnew2;User Id=db_a9b162_illiakursnew2_admin;Password=qwerty123";
