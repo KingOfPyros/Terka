@@ -134,7 +134,7 @@
 
         #endregion
 
-        private TextBox UsernameTextBox;
+        public TextBox UsernameTextBox;
         private TextBox PasswordTextBox;
         private ComboBox RoleComboBox;
         private Button RegisterButton;

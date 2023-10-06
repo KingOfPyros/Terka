@@ -12,5 +12,11 @@ namespace Terka.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public byte[] ImagePath { get; set; }
+
+        public string GetData()
+        {
+            
+            return Name;
+        }
     }
 }

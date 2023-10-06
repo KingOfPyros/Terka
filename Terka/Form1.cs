@@ -1,17 +1,25 @@
 using System;
+using System.Reflection;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
 using Terka.Controllers;
 using Terka.Models;
+using Terka.Interface;
 
 namespace Terka
 {
     public partial class Form1 : Form
     {
         private string connectionString = "Data Source=SQL8005.site4now.net;Initial Catalog=db_a9c6db_illiakurslog;User Id=db_a9c6db_illiakurslog_admin;Password=qwerty123";
-
+        private Item model;
+        private Viewa view;
+        private FormController controller;
         public Form1()
         {
+            InitializeComponent();
+            model = new Item();
+            view = new Viewa();
+            controller = new FormController(model, view);
             InitializeComponent();
         }
 
@@ -48,8 +56,8 @@ namespace Terka
                     }
                     else if (role == "user")
                     {
-                        FormController formController1 = new FormController();
-                        formController1.ShowView();
+                        Form3 form3 = new Form3();
+                        form3.ShowDialog();
                     }
                 }
                 else
