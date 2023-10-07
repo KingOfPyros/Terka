@@ -135,12 +135,12 @@
         #endregion
 
         public TextBox UsernameTextBox;
-        private TextBox PasswordTextBox;
-        private ComboBox RoleComboBox;
-        private Button RegisterButton;
-        private Button LoginButton;
-        private Label label1;
-        private Label label2;
-        private Label label3;
+        public TextBox PasswordTextBox;
+        public ComboBox RoleComboBox;
+        public Button RegisterButton;
+        public Button LoginButton;
+        public Label label1;
+        public Label label2;
+        public Label label3;
     }
 }

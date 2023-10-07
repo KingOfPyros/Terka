@@ -14,6 +14,8 @@ namespace Terka
         private Item model;
         private Viewa view;
         private FormController controller;
+        public event Action<string, string>? LoginClicked;
+        public event Action<string, string, string?>? RegisterClicked;
         public Form1()
         {
             InitializeComponent();
@@ -27,6 +29,7 @@ namespace Terka
         {
             string username = UsernameTextBox.Text;
             string password = PasswordTextBox.Text;
+            LoginClicked?.Invoke(username, password);
 
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
@@ -47,7 +50,7 @@ namespace Terka
                 {
                     SqlCommand roleCommand = new SqlCommand("SELECT Role FROM Users WHERE Username = @Username", connection);
                     roleCommand.Parameters.AddWithValue("@Username", username);
-                    string role = roleCommand.ExecuteScalar().ToString();
+                    string? role = roleCommand.ExecuteScalar().ToString();
 
                     if (role == "admin")
                     {
@@ -71,7 +74,8 @@ namespace Terka
         {
             string username = UsernameTextBox.Text;
             string password = PasswordTextBox.Text;
-            string role = RoleComboBox.SelectedItem.ToString();
+            string? role = RoleComboBox.SelectedItem.ToString();
+            RegisterClicked?.Invoke(username, password, role);
 
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(role))
             {
